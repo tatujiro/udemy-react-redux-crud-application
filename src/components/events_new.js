@@ -20,11 +20,11 @@ class EventsNew extends Component{
     )
   }
   async onSubmit(values){
-    // await this.props.postEvent(values)
+    await this.props.postEvent(values)
     this.props.history.push('/')
   }
   render(){
-    const {handleSubmit,pristine,submitting} = this.props 
+    const {handleSubmit,pristine,submitting,invalid} = this.props 
     return(
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <div>
@@ -35,7 +35,7 @@ class EventsNew extends Component{
         </div>
 
         <div>
-        <input type="submit" value="Submit" disabled={pristine || submitting} />
+        <input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
         <Link to="/">Cancel</Link>
         </div>
       </form>
